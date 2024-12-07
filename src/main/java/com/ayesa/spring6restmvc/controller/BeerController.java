@@ -4,7 +4,9 @@ import com.ayesa.spring6restmvc.model.Beer;
 import com.ayesa.spring6restmvc.services.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,11 +23,12 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/api/v1")
 public class BeerController {
 
     private final BeerService beerService;
 
-    @RequestMapping("/api/v1/beers")
+    @RequestMapping(value = "/beers", method = RequestMethod.GET)
     public List<Beer> listBeers() {
 
         log.info("BeerController.listBeers() (in controller) was called!");
@@ -33,7 +36,8 @@ public class BeerController {
         return beerService.listBeers();
     }
 
-    public Beer getBeerById(UUID beerId) {
+    @RequestMapping(value = "/beer/{beerId}", method = RequestMethod.GET)
+    public Beer getBeerById(@PathVariable("beerId") final UUID beerId) {
 
         log.info("BeerController.getBeerById() - beerId: {} (in controller) was called!", beerId);
 
