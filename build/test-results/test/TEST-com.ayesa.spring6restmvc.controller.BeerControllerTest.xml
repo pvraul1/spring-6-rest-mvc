@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ayesa.spring6restmvc.controller.BeerControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-07T16:13:52" hostname="Rauls-Mac-mini.local" time="0.293">
+  <properties/>
+  <testcase name="getBeerById()" classname="com.ayesa.spring6restmvc.controller.BeerControllerTest" time="0.293"/>
+  <system-out><![CDATA[17:13:51.815 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ayesa.spring6restmvc.controller.BeerControllerTest]: BeerControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:13:51.846 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ayesa.spring6restmvc.Spring6RestMvcApplication for test class com.ayesa.spring6restmvc.controller.BeerControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.0)
+
+2024-12-07T17:13:51.960+01:00  INFO 4571 --- [spring-6-rest-mvc] [    Test worker] c.a.s.controller.BeerControllerTest      : Starting BeerControllerTest using Java 17.0.13 with PID 4571 (started by raulmini in /Volumes/HomeX/DEV/git/courses/springframeworkguru/spring-6-rest-mvc)
+2024-12-07T17:13:51.960+01:00  INFO 4571 --- [spring-6-rest-mvc] [    Test worker] c.a.s.controller.BeerControllerTest      : No active profile set, falling back to 1 default profile: "default"
+2024-12-07T17:13:52.297+01:00  INFO 4571 --- [spring-6-rest-mvc] [    Test worker] c.a.s.controller.BeerControllerTest      : Started BeerControllerTest in 0.408 seconds (process running for 0.727)
+2024-12-07T17:13:52.589+01:00  INFO 4571 --- [spring-6-rest-mvc] [    Test worker] c.a.s.controller.BeerController          : BeerController.getBeerById() - beerId: 88dd1f3a-b1d4-4adf-b905-43736fac494c (in controller) was called!
+2024-12-07T17:13:52.590+01:00  INFO 4571 --- [spring-6-rest-mvc] [    Test worker] c.a.s.services.BeerServiceImpl           : BeerServiceImpl.getBeerById() - beerId: 88dd1f3a-b1d4-4adf-b905-43736fac494c (in service) was called!
+Beer(id=88dd1f3a-b1d4-4adf-b905-43736fac494c, version=null, beerName=Galaxy Cat, beerStyle=PALE_ALE, upc=123456, quantityOnHand=122, price=12.95, createdDate=2024-12-07T17:13:52.590753, updateDate=2024-12-07T17:13:52.590760)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
