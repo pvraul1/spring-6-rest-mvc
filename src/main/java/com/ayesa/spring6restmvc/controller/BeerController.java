@@ -4,10 +4,9 @@ import com.ayesa.spring6restmvc.model.Beer;
 import com.ayesa.spring6restmvc.services.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +26,15 @@ import java.util.UUID;
 public class BeerController {
 
     private final BeerService beerService;
+
+    @PostMapping("/beer")
+    public ResponseEntity handlePost(@RequestBody final Beer beer) {
+        log.info("BeerController.handlePost() (in controller) was called!");
+
+        final Beer savedBeer = beerService.saveBeer(beer);
+
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
 
     @RequestMapping(value = "/beer", method = RequestMethod.GET)
     public List<Beer> listBeers() {
