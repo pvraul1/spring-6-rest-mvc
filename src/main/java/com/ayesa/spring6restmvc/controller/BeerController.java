@@ -28,7 +28,7 @@ public class BeerController {
 
     private final BeerService beerService;
 
-    @RequestMapping(value = "/beers", method = RequestMethod.GET)
+    @RequestMapping(value = "/beer", method = RequestMethod.GET)
     public List<Beer> listBeers() {
 
         log.info("BeerController.listBeers() (in controller) was called!");

@@ -74,7 +74,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
-    public Beer getBeerById(UUID beerId) {
+    public Beer getBeerById(final UUID beerId) {
 
         log.info("BeerServiceImpl.getBeerById() - beerId: {} (in service) was called!", beerId);
 
