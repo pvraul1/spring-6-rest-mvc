@@ -4,6 +4,7 @@ import com.ayesa.spring6restmvc.model.Beer;
 import com.ayesa.spring6restmvc.services.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,15 @@ public class BeerController {
     private final BeerService beerService;
 
     @PostMapping("/beer")
-    public ResponseEntity handlePost(@RequestBody final Beer beer) {
+    public ResponseEntity<Void> handlePost(@RequestBody final Beer beer) {
         log.info("BeerController.handlePost() (in controller) was called!");
 
         final Beer savedBeer = beerService.saveBeer(beer);
 
-        return new ResponseEntity(HttpStatus.CREATED);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Location", "/api/v1/beer/" + savedBeer.getId().toString());
+
+        return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/beer", method = RequestMethod.GET)
