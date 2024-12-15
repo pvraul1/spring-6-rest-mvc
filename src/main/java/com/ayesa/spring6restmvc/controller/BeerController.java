@@ -28,6 +28,15 @@ public class BeerController {
 
     private final BeerService beerService;
 
+    @PutMapping("/beer/{beerId}")
+    public ResponseEntity<Void> updateById(@PathVariable("beerId") UUID beerId,@RequestBody final Beer beer) {
+        log.info("BeerController.updateById() (in controller) was called!");
+
+        beerService.updateById(beerId, beer);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
     @PostMapping("/beer")
     public ResponseEntity<Void> handlePost(@RequestBody final Beer beer) {
         log.info("BeerController.handlePost() (in controller) was called!");
