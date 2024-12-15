@@ -28,6 +28,15 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
+    @PutMapping("/customer/{customerId}")
+    public ResponseEntity<Void> updateById(@PathVariable("customerId") UUID customerId, @RequestBody final Customer customer) {
+        log.info("CustomerController.updateById() (in controller) was called!");
+
+        customerService.updateById(customerId, customer);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
     public ResponseEntity<Void> handlePost(@RequestBody final Customer customer) {
         log.info("CustomerController.handlePost() (in controller) was called!");
