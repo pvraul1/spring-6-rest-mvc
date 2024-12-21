@@ -28,6 +28,15 @@ public class BeerController {
 
     private final BeerService beerService;
 
+    @PatchMapping("/beer/{beerId}")
+    public ResponseEntity<Void> updateBeerPatchById(@PathVariable("beerId") final UUID beerId,@RequestBody final Beer beer) {
+        log.info("BeerController.updateBeerPatchById() (in controller) was called!");
+
+        beerService.updateBeerPatchById(beerId, beer);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
     @DeleteMapping("/beer/{beerId}")
     public ResponseEntity<Void> deleteById(@PathVariable("beerId") UUID beerId) {
         log.info("BeerController.deleteById() (in controller) was called!");
@@ -38,7 +47,7 @@ public class BeerController {
     }
 
     @PutMapping("/beer/{beerId}")
-    public ResponseEntity<Void> updateById(@PathVariable("beerId") UUID beerId,@RequestBody final Beer beer) {
+    public ResponseEntity<Void> updateById(@PathVariable("beerId") final UUID beerId,@RequestBody final Beer beer) {
         log.info("BeerController.updateById() (in controller) was called!");
 
         beerService.updateById(beerId, beer);
