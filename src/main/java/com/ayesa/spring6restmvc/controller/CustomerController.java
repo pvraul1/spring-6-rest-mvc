@@ -28,8 +28,17 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
+    @PatchMapping("/customer/{customerId}")
+    public ResponseEntity<Void> updateCustomerPatchById(final @PathVariable("customerId") UUID customerId, @RequestBody final Customer customer) {
+        log.info("CustomerController.updateCustomerPatchById() (in controller) was called!");
+
+        customerService.updateCustomerPatchById(customerId, customer);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
     @DeleteMapping("/customer/{customerId}")
-    public ResponseEntity<Void> deleteById(@PathVariable("customerId") UUID customerId) {
+    public ResponseEntity<Void> deleteById(@PathVariable("customerId") final UUID customerId) {
         log.info("CustomerController.deleteById() (in controller) was called!");
 
         customerService.deleteById(customerId);
@@ -38,7 +47,7 @@ public class CustomerController {
     }
 
     @PutMapping("/customer/{customerId}")
-    public ResponseEntity<Void> updateById(@PathVariable("customerId") UUID customerId, @RequestBody final Customer customer) {
+    public ResponseEntity<Void> updateById(@PathVariable("customerId") final UUID customerId, @RequestBody final Customer customer) {
         log.info("CustomerController.updateById() (in controller) was called!");
 
         customerService.updateById(customerId, customer);

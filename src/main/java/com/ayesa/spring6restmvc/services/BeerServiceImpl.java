@@ -130,7 +130,10 @@ public class BeerServiceImpl implements BeerService {
             existing.setUpc(beer.getUpc());
         }
 
-        existing.setVersion(beer.getVersion());
+        if (beer.getVersion() != null) {
+            existing.setVersion(beer.getVersion());
+        }
+
         existing.setUpdateDate(LocalDateTime.now());
 
         beerMap.put(beerId, existing);
