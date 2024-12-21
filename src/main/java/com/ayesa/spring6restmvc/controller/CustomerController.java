@@ -28,6 +28,15 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
+    @DeleteMapping("/customer/{customerId}")
+    public ResponseEntity<Void> deleteById(@PathVariable("customerId") UUID customerId) {
+        log.info("CustomerController.deleteById() (in controller) was called!");
+
+        customerService.deleteById(customerId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
     @PutMapping("/customer/{customerId}")
     public ResponseEntity<Void> updateById(@PathVariable("customerId") UUID customerId, @RequestBody final Customer customer) {
         log.info("CustomerController.updateById() (in controller) was called!");
